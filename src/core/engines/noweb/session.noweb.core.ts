@@ -173,7 +173,7 @@ export class WhatsappSessionNoWebCore extends WhatsappSession {
     this.log.debug(`Connecting store...`);
     if (!this.store) {
       this.log.debug(`Making a new auth store...`);
-      this.store = makeInMemoryStore({});
+      this.store = makeInMemoryStore({ logger: logger });
     }
     this.log.debug(`Binding store to socket...`);
     this.store.bind(this.sock.ev);
@@ -516,7 +516,9 @@ export class WhatsappSessionNoWebCore extends WhatsappSession {
   }
 
   public async getContactProfilePicture(query: ContactQuery) {
-    throw new NotImplementedByEngineError();
+    const contact = this.ensureSuffix(query.contactId);
+    const url = await this.sock.profilePictureUrl(contact, 'image');
+    return { profilePictureURL: url };
   }
 
   public async blockContact(request: ContactRequest) {

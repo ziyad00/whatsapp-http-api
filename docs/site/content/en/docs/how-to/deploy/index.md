@@ -1,12 +1,12 @@
 ---
-title: "Deploy"
+title: "🚀 Deploy"
 description: "How to deploy WAHA"
 lead: ""
 date: 2020-10-06T08:48:45+00:00
 lastmod: 2020-10-06T08:48:45+00:00
 draft: false
 images: [ ]
-weight: 899
+weight: 898
 ---
 
 This page provides useful information to assist you in deploying the project.

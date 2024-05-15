@@ -1,12 +1,12 @@
 ---
-title : "Send messages"
+title : "📤 Send messages"
 description: "Send messages"
 lead: ""
 date: 2020-10-06T08:48:45+00:00
 lastmod: 2020-10-06T08:48:45+00:00
 draft: false
 images: []
-weight: 110
+weight: 115
 ---
 
 We consider that you've run docker container and authenticated the session with QR code.
@@ -87,7 +87,7 @@ To reply on a message - use `POST /api/reply` with example payload.
 }
 ```
 
-#### Reply files ![](/images/versions/plus-soon.png)
+#### Reply files ![](/images/versions/plus.png)
 WAHA does not support reply with files (images, voice, etc.). If you're interested in it - please create an issue in GitHub.
 
 
@@ -273,6 +273,8 @@ You can send voice messages in two ways:
 1. Provide a URL for the voice.
 2. Encode the whole file content into base64 and send it in the request body.
 
+Please make sure your file has **OPUS** encoding and packed in OGG container.
+
 #### URL
 ```json
 {
@@ -280,8 +282,7 @@ You can send voice messages in two ways:
   "chatId": "11111111111@c.us",
   "file": {
     "mimetype": "audio/ogg; codecs=opus",
-    "filename": "voice-message.mp3",
-    "url": "https://github.com/devlikeapro/whatsapp-http-api/raw/core/examples/dev.likeapro.mp3"
+    "url": "https://github.com/devlikeapro/whatsapp-http-api/raw/core/examples/dev.likeapro.opus"
   },
   "caption": "string"
 }
@@ -319,7 +320,7 @@ You can send voice messages in two ways:
   "file": {
     "mimetype": "video/mp4",
     "filename": "video.mp4",
-    "url": "https://github.com/devlikeapro/whatsapp-http-api/raw/core/examples/dev.likeapro.mp3"
+    "url": "https://github.com/devlikeapro/whatsapp-http-api/raw/core/examples/video.mp4"
   }
 }
 ```

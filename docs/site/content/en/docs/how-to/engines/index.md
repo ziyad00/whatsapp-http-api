@@ -1,5 +1,5 @@
 ---
-title: "Engines"
+title: "🏭 Engines"
 description: "Engines"
 lead: ""
 date: 2020-10-06T08:48:45+00:00
@@ -129,8 +129,6 @@ please [create an issue](https://github.com/devlikeapro/whatsapp-http-api/issues
 | `POST /api/{session}/auth/qr`                                     |  ✔️   |                                    ✔️                                     |  ✔️   |
 | `POST /api/{session}/auth/request-code`                           |   ➖   |                                    ✔️                                     |   ➖   |
 | `POST /api/{session}/auth/authorize-code`                         |   ➖   | ➖️<br>[#113](https://github.com/devlikeapro/whatsapp-http-api/issues/113) |   ➖   |
-| `GET /api/{session}/auth/captcha`   <br>Only in **MOBILE** engine |   ➖   |                                     ➖                                     |   ➖   |
-| `POST /api/{session}/auth/captcha` <br>Only in **MOBILE** engine  |   ➖   |                                     ➖                                     |   ➖   |
 | **Screenshot**                                                    |       |                                                                           |       |
 | `POST /api/screenshot`                                            |  ✔️   |                                     ➖                                     |  ✔️   |
 
@@ -176,7 +174,7 @@ please [create an issue](https://github.com/devlikeapro/whatsapp-http-api/issues
 | `GET /api/contacts/all`                                           |  ✔️   |   ➖   |   ➖   |
 | `GET /api/contacts/check-exists`                                  |  ✔️   |  ✔️   |  ✔️   |
 | `GET /api/contacts/about`                                         |  ✔️   |   ➖   |   ➖   |
-| `GET /api/contacts/profile-picture`                               |  ✔️   |   ➖   |   ➖   |
+| `GET /api/contacts/profile-picture`                               |  ✔️   |  ✔️   |   ➖   |
 | `POST /api/contacts/block`                                        |  ✔️   |   ➖   |   ➖   |
 | `POST /api/contacts/unblock`                                      |  ✔️   |   ➖   |   ➖   |
 

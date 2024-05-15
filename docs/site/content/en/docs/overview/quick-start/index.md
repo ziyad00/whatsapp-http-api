@@ -1,5 +1,5 @@
 ---
-title: "Quick Start"
+title: "⚡ Quick Start"
 description: "One page summary of how to start WhatsApp HTTP API."
 lead: "One page summary of how to start WhatsApp HTTP API."
 date: 2020-11-16T13:59:39+01:00
@@ -189,8 +189,9 @@ curl -d "{\"chatId\": \"${PHONE}@c.us\", \"text\": \"Hello from WhatsApp HTTP AP
 ```
 
 ## What is next?
-- Right now you've sent simple text message, but you can send more! [Send messages →]({{< relref "/docs/how-to/send-messages" >}})
-- Read how to receive and response to messages [Receive messages →]({{< relref "/docs/how-to/receive-messages" >}})
+- Learn about the easiest way to manage your WhatsApp sessions - [Dashboard ->]({{< relref "/docs/how-to/waha-dashboard" >}})
+- Right now you've sent simple text message, but you can send more! [Send messages ->]({{< relref "/docs/how-to/send-messages" >}})
+- Read how to receive and response to messages [Receive messages ->]({{< relref "/docs/how-to/receive-messages" >}})
 - [Save session information, so you don't have to scan QR after container restart ->]({{< relref "/docs/how-to/sessions" >}})
 - Make sure your [API is properly protected ->]({{< relref "/docs/how-to/security" >}})
 

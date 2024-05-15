@@ -1,5 +1,5 @@
 ---
-title: "Sessions"
+title: "🖥️ Sessions"
 description: "Sessions"
 lead: ""
 date: 2020-10-06T08:48:45+00:00
@@ -108,7 +108,30 @@ The response:
 [
   {
     "name": "default",
-    "status": "STARTING"
+    "status": "WORKING",
+    "config": {
+      "proxy": null,
+      "webhooks": [
+        {
+          "url": "https://httpbin.org/post",
+          "events": [
+            "message",
+            "session.status"
+          ],
+          "hmac": null,
+          "retries": null,
+          "customHeaders": null
+        }
+      ],
+      "debug": false
+    },
+    "me": {
+      "id": "79111111@c.us",
+      "pushName": "WAHA"
+    },
+    "engine": {
+      "engine": "NOWEB"
+    }
   }
 ]
 ```
@@ -116,6 +139,38 @@ The response:
 You can add `?all=true` parameter to the request `GET /api/session?all=True` it'll show you ALL session,
 including **STOPPED**,
 so you can know which one will be restarted if you set `WHATSAPP_RESTART_ALL_SESSIONS=True` environment variable.
+
+### Get session
+To get information about a specific session - call `GET /api/sessions/{session}`.
+```json
+{
+  "name": "default",
+  "status": "WORKING",
+  "config": {
+    "proxy": null,
+    "webhooks": [
+      {
+        "url": "https://httpbin.org/post",
+        "events": [
+          "message",
+          "session.status"
+        ],
+        "hmac": null,
+        "retries": null,
+        "customHeaders": null
+      }
+    ],
+    "debug": false
+  },
+  "me": {
+    "id": "79111111@c.us",
+    "pushName": "WAHA"
+  },
+  "engine": {
+    "engine": "NOWEB"
+  }
+}
+```
 
 ### Stop
 
@@ -279,7 +334,9 @@ See the list of engines [**that support the feature ->**]({{< relref "/docs/how-
 The `session.status` event is triggered when the session status changes.
 - `STOPPED` - session is stopped
 - `STARTING` - session is starting
-- `SCAN_QR_CODE` - session is required to scan QR code or login via phone number
+- `SCAN_QR_CODE` - session is required to scan QR code or login via phone number.
+  - When you receive the `session.status` event with `SCAN_QR_CODE` status, you can [**fetch updated QR ->**]({{< relref "/docs/how-to/sessions#get-qr" >}})
+  - The `SCAN_QR_CODE` is issued every time when QR updated (WhatsApp requirements)
 - `WORKING` - session is working and ready to use
 - `FAILED` - session is failed due to some error. It's likely that authorization is required again or device has been disconnected from that account.
   Try to restart the session and if it doesn't help - logout and start the session again.

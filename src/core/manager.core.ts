@@ -105,6 +105,11 @@ export class SessionManagerCore extends SessionManager {
   //
   async start(request: SessionStartRequest): Promise<SessionDTO> {
     this.onlyDefault(request.name);
+    if (this.session) {
+      throw new UnprocessableEntityException(
+        `Session '${this.DEFAULT}' is already started.`,
+      );
+    }
 
     const name = request.name;
     this.log.log(`'${name}' - starting session...`);
@@ -186,6 +191,18 @@ export class SessionManagerCore extends SessionManager {
   }
 
   async logout(request: SessionLogoutRequest) {
+    const name = request.name;
+    this.onlyDefault(request.name);
+    this.stop({ name: name, logout: false })
+      .then(() => {
+        this.log.log(`Session '${name}' has been stopped.`);
+      })
+      .catch((err) => {
+        this.log.error(
+          `Error while stopping session '${name}' while logging out`,
+          err,
+        );
+      });
     await this.sessionAuthRepository.clean(request.name);
   }
 
@@ -228,5 +245,12 @@ export class SessionManagerCore extends SessionManager {
         engine: engine,
       },
     ];
+  }
+
+  async getSessionInfo(name: string): Promise<SessionInfo | null> {
+    if (name !== this.DEFAULT) {
+      return null;
+    }
+    return this.getSessions(true).then((sessions) => sessions[0]);
   }
 }

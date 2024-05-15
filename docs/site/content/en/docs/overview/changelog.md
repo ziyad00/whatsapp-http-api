@@ -1,5 +1,5 @@
 ---
-title: "Changelog"
+title: "🔄 Changelog"
 description: "WAHA's changelog"
 lead: "You can find here the list of changes made to WAHA."
 date: 2020-10-06T08:49:31+00:00
@@ -15,9 +15,73 @@ toc: true
 
 If you wish to get and read Release Notes - read them on one of our platforms, **these posts are FREE**.
 - [**Boosty ->**](https://boosty.to/wa-http-api)
-- [**Patreon ->**](patreon.com/wa_http_api)
+- [**Patreon ->**](https://patreon.com/wa_http_api)
 
-You even can **subscribe to get new updates** there!
+**Subscribe for FREE to get new updates** there!
+
+----
+
+## 2024.5
+### 🎉 New
+----
+
+[Swagger White Label]({{< relref "/docs/how-to/swagger#white-label" >}}) - show your own brand in the Swagger documentation!
+- Read more about [Swagger White Label]({{< relref "/docs/how-to/swagger#white-label" >}})
+- Issue: [#305](https://github.com/devlikeapro/whatsapp-http-api/issues/305)
+- Build: `2024.5.4`
+- Engine: **ALL**
+
+----
+
+### 🐛 Fixes
+----
+
+Fix send video issue `POST /api/sendVideo` in **WEBJS**.
+- Issue: [#321](https://github.com/devlikeapro/whatsapp-http-api/issues/321)
+- Issue: [#328](https://github.com/devlikeapro/whatsapp-http-api/issues/328)
+- Build: `2024.5.6`
+- Engine: **WEBJS**
+
+----
+
+Use local cache for **WEBJS** engine (versions file).
+- Issue: [#316](https://github.com/devlikeapro/whatsapp-http-api/issues/316)
+- Build: `2024.5.4`
+- Engine: **WEBJS**
+
+----
+
+Don't allow to start two sessions with the same name.
+
+Before API allowed to start two sessions with the same name, which could lead to potential problems (no way to stop the first, abandoned session).
+- Issue: [#315](https://github.com/devlikeapro/whatsapp-http-api/issues/315)
+- Read more about [start a session](https://waha.devlike.pro/docs/how-to/sessions/#start)
+- Build: `2024.5.3`
+- Engine: **ALL**
+
+----
+
+## 2024.4
+### 🎉 New
+----
+
+Add **WAHA Dashboard** - UI to manage your WhatsApp sessions!
+- Read more about [Dashboard]({{< relref "/docs/how-to/waha-dashboard" >}})
+- Open [screenshot](/images/waha-dashboard.png)
+
+----
+
+Add `GET /api/sessions/{session}` endpoint to get information about a specific session.
+- Read more about [Get session information]({{< relref "/docs/how-to/sessions#get-session" >}})
+- Issue: [#300](https://github.com/devlikeapro/whatsapp-http-api/issues/300)
+
+----
+
+Implement `GET /api/contacts/profile-picture` for **NOWEB** engine.
+- Read more about [Get contact profile picture](https://waha.devlike.pro/docs/how-to/contacts/#get-contact-profile-picture)
+- Issue: [#298](https://github.com/devlikeapro/whatsapp-http-api/issues/298)
+
+----
 
 ## 2024.3
 ### 🎉 New

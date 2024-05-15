@@ -8,13 +8,13 @@ import { getEngineName } from './version';
 
 @Injectable()
 export class WhatsappConfigService {
-  public files_uri = '/api/files';
+  public filesUri = '/api/files';
   public schema = 'http';
 
   constructor(private configService: ConfigService) {}
 
   get filesURL(): string {
-    return `${this.schema}://${this.hostname}:${this.port}${this.files_uri}/`;
+    return `${this.schema}://${this.hostname}:${this.port}${this.filesUri}/`;
   }
 
   get hostname(): string {
@@ -131,29 +131,25 @@ export class WhatsappConfigService {
     return this.configService.get('WHATSAPP_API_KEY', '');
   }
 
-  getSwaggerEnabled(): boolean {
-    const value = this.configService.get('WHATSAPP_SWAGGER_ENABLED', 'true');
+  getDashboardEnabled(): boolean {
+    const value = this.configService.get('WAHA_DASHBOARD_ENABLED', 'true');
     return parseBool(value);
   }
 
-  getSwaggerUsernamePassword(): [string, string] | undefined {
-    const user = this.configService.get('WHATSAPP_SWAGGER_USERNAME', undefined);
-    const password = this.configService.get(
-      'WHATSAPP_SWAGGER_PASSWORD',
-      undefined,
-    );
-    if (!user && !password) {
+  getDashboardUsernamePassword(): [string, string] | null {
+    if (!this.getDashboardEnabled()) {
+      return null;
+    }
+    const user = this.configService.get('WAHA_DASHBOARD_USERNAME', 'waha');
+    const password = this.configService.get('WAHA_DASHBOARD_PASSWORD', 'waha');
+    if (!user || !password) {
       console.log(
-        'Please set up both WHATSAPP_SWAGGER_USERNAME and WHATSAPP_SWAGGER_PASSWORD ' +
+        'Please set up both WAHA_DASHBOARD_USERNAME and WAHA_DASHBOARD_PASSWORD ' +
           'to enable swagger authentication.',
       );
-      return undefined;
+      return null;
     }
     return [user, password];
-  }
-
-  getSwaggerAdvancedConfigEnabled(): boolean {
-    return this.configService.get('WHATSAPP_SWAGGER_CONFIG_ADVANCED', false);
   }
 
   getHealthMediaFilesThreshold(): number {
